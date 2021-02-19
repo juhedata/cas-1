@@ -1,4 +1,4 @@
-<?php namespace Subfission\Cas;
+<?php namespace JuHeData\Cas;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -20,7 +20,7 @@ class CasServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__ . '/../../config/config.php' => config_path('cas.php'),
+            __DIR__ . '/../config/config.php' => config_path('cas.php'),
         ], 'cas');
     }
 
@@ -32,7 +32,7 @@ class CasServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('cas', function () {
-            return new CasManager( config('cas') );
+            return new CasManager(config('cas'));
         });
     }
 
@@ -43,7 +43,7 @@ class CasServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array('cas');
+        return ['cas'];
     }
 
 }

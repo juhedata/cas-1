@@ -12,6 +12,7 @@ Check out the [wiki](https://github.com/subfission/cas/wiki) for further details
 
 
 ## Updates
+* fixed Logger debug：replace setDebug by setLogger
 * Support added for Laravel 8.x
 * Support added for Laravel 7.x
 * Updated for Laravel 6.x

@@ -9,7 +9,7 @@ if ( ! function_exists('cas')) {
     /**
      * Initiate CAS hook.
      *
-     * @return \Subfission\Cas\CasManager
+     * @return \JuHeData\Cas\CasManager
      */
     function cas()
     {

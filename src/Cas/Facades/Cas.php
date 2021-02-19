@@ -1,4 +1,6 @@
-<?php namespace Subfission\Cas\Facades;
+<?php
+
+namespace JuHeData\Cas\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
@@ -17,9 +19,10 @@ use Illuminate\Support\Facades\Facade;
  * @method static bool isMasquerading()
  * @method static setAttributes(array $attr)
  *
- * @see \Subfission\Cas\CasManager
+ * @see \JuHeData\Cas\CasManager
  */
-class Cas extends Facade {
+class Cas extends Facade
+{
     /**
      * Get the registered name of the component.
      *
@@ -27,5 +30,8 @@ class Cas extends Facade {
      *
      * @return string
      */
-    protected static function getFacadeAccessor() { return 'cas'; }
+    protected static function getFacadeAccessor()
+    {
+        return 'cas';
+    }
 }

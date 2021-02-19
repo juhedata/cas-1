@@ -1,4 +1,4 @@
-<?php namespace Subfission\Cas\Middleware;
+<?php namespace JuHeData\Cas\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Auth\Guard;

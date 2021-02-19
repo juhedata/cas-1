@@ -1,5 +1,5 @@
 {
-  "name": "subfission/cas",
+  "name": "juhedata/laravel_cas_client",
   "description": "Adds CAS support to Laravel 5.x, 6.x, 7.x & 8.x",
   "keywords": [
     "CAS",
@@ -13,7 +13,7 @@
   "license": "MIT",
   "authors": [
     {
-      "name": "subfission",
+      "name": "juhedata",
       "role": "Developer"
     }
   ],
@@ -27,25 +27,25 @@
   },
   "autoload": {
     "psr-4": {
-      "Subfission\\Cas\\": "src/Subfission/Cas/"
+      "JuHeData\\Cas\\": "src/Cas/"
     },
     "files": [
-      "src/Subfission/Cas/functions.php"
+      "src/Cas/functions.php"
     ]
   },
   "autoload-dev": {
     "psr-4": {
-      "Subfission\\Cas\\Tests\\": "tests"
+      "JuHeData\\Cas\\Tests\\": "tests"
     }
   },
   "minimum-stability": "stable",
   "extra": {
     "laravel": {
       "providers": [
-        "Subfission\\Cas\\CasServiceProvider"
+        "JuHeData\\Cas\\CasServiceProvider"
       ],
       "aliases": {
-        "Cas": "Subfission\\Cas\\Facades\\Cas"
+        "Cas": "JuHeData\\Cas\\Facades\\Cas"
       }
     }
   }
