@@ -78,10 +78,9 @@ class CasManager
 
         //如果设置了代理地址，则添加到允许的代理列表中：被代理端需要设置改地址，允许的代理服务器
         if ($url = $this->config['cas_proxy_urls']) {
-            if (!is_array($url)) {
-                $url = [$url];
+            if ($urls = explode(',', $url)) {
+                phpCAS::allowProxyChain(new \CAS_ProxyChain($urls));
             }
-            phpCAS::allowProxyChain(new \CAS_ProxyChain($url));
         }
 
         if ($this->config['cas_masquerade']) {
@@ -162,7 +161,7 @@ class CasManager
             'cas_debug' => false,
             'cas_verbose_errors' => false,
             'cas_masquerade' => '',
-            'cas_proxy_urls' => [],
+            'cas_proxy_urls' => '',
             'cas_pgt_driver' => false,
             'cas_pgt_path' => '',
             'cas_pgt_mysql' => [],
