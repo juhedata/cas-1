@@ -198,7 +198,7 @@ return [
         'host' => env('CAS_PGT_DB_HOST', 'localhost'),
         'port' => env('CAS_PGT_DB_PORT', '3306'),
         'username' => env('CAS_PGT_DB_USERNAME', ''),
-        'passport' => env('CAS_PGT_DB_PASSPORT', ''),
+        'password' => env('CAS_PGT_DB_PASSWORD', ''),
         'db_name' => env('CAS_PGT_DB_NAME', ''),
     ],
 ];
