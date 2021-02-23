@@ -61,6 +61,29 @@ class CasManager
 
         phpCAS::setServerLogoutURL($this->config['cas_logout_url']);
 
+        // 如果是代理，设置代理ticket存储类型:代理端的PGT 存储配置
+        if ($this->config['cas_proxy']) {
+            if ($this->config['cas_pgt_driver'] == 'mysql') {
+                $dsn = "mysql:host={$this->config['cas_pgt_mysql']['host']};port={$this->config['cas_pgt_mysql']['port']};dbname={$this->config['cas_pgt_mysql']['db_name']}";
+                phpCAS::setPGTStorageDb($dsn, $this->config['cas_pgt_mysql']['username'],
+                    $this->config['cas_pgt_mysql']['password'], 'cas_proxy_pgt_iou');
+            } else {
+                if ($this->config['cas_pgt_driver'] == 'file') {
+                    phpCAS::setPGTStorageFile($this->config['cas_pgt_path']);
+                } else {
+                    phpCAS::log('Proxy Driver Undefined: ' . $this->config['cas_pgt_driver']);
+                }
+            }
+        }
+
+        //如果设置了代理地址，则添加到允许的代理列表中：被代理端需要设置改地址，允许的代理服务器
+        if ($url = $this->config['cas_proxy_urls']) {
+            if (!is_array($url)) {
+                $url = [$url];
+            }
+            phpCAS::allowProxyChain(new \CAS_ProxyChain($url));
+        }
+
         if ($this->config['cas_masquerade']) {
             $this->_masquerading = true;
             phpCAS::log('Masquerading as user: '
@@ -138,7 +161,11 @@ class CasManager
             'cas_version' => "2.0",
             'cas_debug' => false,
             'cas_verbose_errors' => false,
-            'cas_masquerade' => ''
+            'cas_masquerade' => '',
+            'cas_proxy_urls' => [],
+            'cas_pgt_driver' => false,
+            'cas_pgt_path' => '',
+            'cas_pgt_mysql' => [],
         ];
 
         $this->config = array_merge($defaults, $config);
@@ -336,6 +363,19 @@ class CasManager
         $this->_attributes = $attr;
         phpCAS::log('Forced setting of user masquerading attributes: '
             . serialize($attr));
+    }
+
+    /**
+     * PT获取，可以通过这个ticket获取被代理的用户资源
+     * @param $targetService 'http://cas.client2.cn/api/cas/oauth/ucenter'
+     * @return string
+     */
+    public function retrievePT($targetService)
+    {
+        $pt = phpCAS::retrievePT($targetService, $err_code, $err_msg);
+        phpCAS::log('Retrieve PT Log: '
+            . serialize(["code" => $err_code, 'errMsg' => $err_msg]));
+        return $pt;
     }
 
     /**

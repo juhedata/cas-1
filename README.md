@@ -12,6 +12,8 @@ Check out the [wiki](https://github.com/subfission/cas/wiki) for further details
 
 
 ## Updates
+* add proxy support and PT get
+* add create_cas_proxy_pgt_iou_table migrate
 * fixed Logger debug：replace setDebug by setLogger
 * Support added for Laravel 8.x
 * Support added for Laravel 7.x

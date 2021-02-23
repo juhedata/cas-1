@@ -22,6 +22,11 @@ class CasServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../config/config.php' => config_path('cas.php'),
         ], 'cas');
+
+        $timestamp = date('Y_m_d_His', time());
+        $this->publishes([
+            __DIR__ . '/../database/create_cas_proxy_pgt_iou_table.php.stub' => database_path("/migrations/{$timestamp}_create_cas_proxy_pgt_iou_table.php"),
+        ], 'migrations');
     }
 
     /**

@@ -165,5 +165,40 @@ return [
     | This should only be used for developmental purposes.  getAttributes()
     | will return null in this condition.
      */
-    'cas_masquerade' => env('CAS_MASQUERADE', '')
+    'cas_masquerade' => env('CAS_MASQUERADE', ''),
+
+    /*
+    |--------------------------------------------------------------------------
+    | 代理服务器地址列表：被代理系统需要配置 如：http://cas.client2.cn/api/cas/oauth/ucenter
+    | 代理端的service
+    |--------------------------------------------------------------------------
+    */
+    'cas_proxy_urls' => [],
+
+    /*
+    |--------------------------------------------------------------------------
+    | 代理pgt 存储引擎：代理端需要配置【mysql,file】
+    |--------------------------------------------------------------------------
+    */
+    'cas_pgt_driver' => env('cas_pgt_driver', false),
+
+    /*
+    |--------------------------------------------------------------------------
+    | cas_pgt_driver=file需要配置存储pgt的文件路径
+    |--------------------------------------------------------------------------
+    */
+    'cas_pgt_path' => env('cas_pgt_path', ''),
+
+    /*
+    |--------------------------------------------------------------------------
+    | cas_pgt_driver=mysql 链接信息
+    |--------------------------------------------------------------------------
+    */
+    'cas_pgt_mysql' => [
+        'host' => env('CAS_PGT_DB_HOST', 'localhost'),
+        'port' => env('CAS_PGT_DB_PORT', '3306'),
+        'username' => env('CAS_PGT_DB_USERNAME', ''),
+        'passport' => env('CAS_PGT_DB_PASSPORT', ''),
+        'db_name' => env('CAS_PGT_DB_NAME', ''),
+    ],
 ];

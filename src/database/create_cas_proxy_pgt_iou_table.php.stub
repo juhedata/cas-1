@@ -1,0 +1,29 @@
+<?php
+
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
+
+class CreateCasProxyPgtIouTable extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up()
+    {
+        Schema::create('cas_proxy_pgt_iou', function (Blueprint $table) {
+            $table->string('pgt_iou',255);
+            $table->string('pgt',255);
+            $table->primary('pgt_iou');
+        });
+
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down()
+    {
+    }
+}

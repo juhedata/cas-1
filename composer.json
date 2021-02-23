@@ -1,6 +1,6 @@
 {
   "name": "juhedata/laravel_cas_client",
-  "description": "Adds CAS support to Laravel 5.x, 6.x, 7.x & 8.x",
+  "description": "CAS support to Laravel 6.x, 7.x & 8.x",
   "keywords": [
     "CAS",
     "phpCAS",
